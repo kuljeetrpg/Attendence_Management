@@ -1,13 +1,19 @@
 <?php
+$id="";
 require_once("includes/databaseconnect.php");
 require_once("includes/php_script.php");
 
+for ($i=1; $i<=$_POST["reg$i"]; $i++)
+{
+echo($_POST["reg$i"]);
+
+}	
 
 if(!isset($_SESSION['sid']))
 {
-	header("Location: ../Attendence_Management");
+	
 }
-
+echo $id;	
 
 
 if(isset($_POST['logout']))
@@ -35,7 +41,7 @@ if(isset($_POST['logout']))
 
 
 	<div class="container" style="padding: 50px;"> 
-		<h1 align="center">Registeration Number <font color="red"><?php echo (strtoupper($_SESSION['sid']));?></font> Logged In </h1>
+		<h1 align="center">Registeration Number <font color="red"><?php echo $id;?></font> Logged In </h1>
 		<form method="post" style="float:right;">
 			<button type="submit" name="logout" value="logout" class="btn btn-info">Logout</button>
 		</form><br><br><br><br><br>
@@ -44,15 +50,16 @@ if(isset($_POST['logout']))
 		<?php
 		$regno = $_SESSION['sid'];
 		$q = "SELECT  `course_id` FROM `stud_courses` WHERE regno = '$regno'";
+		
 		if($result = mysqli_query($connection,$q))
 		{
 
 			while($row = mysqli_fetch_assoc($result))
 			{
 				$cid = $row['course_id'];
-					$q1="SELECT  `course_title` FROM `courses` WHERE course_id = '$cid'";
+				$q1="SELECT  `course_title` FROM `courses` WHERE course_id = '$cid'";
 				$result1 = mysqli_query($connection,$q1);
-		while($row1 = mysqli_fetch_array($result1))
+		while($row1 = mysqli_fetch_array($result))
 		
 				
 				{	
@@ -60,13 +67,10 @@ if(isset($_POST['logout']))
 				}			
 			echo '<div class="panel-group"><div class="panel panel-warning"><div class="panel-heading"><h4 class="panel-title">';
 				echo "<a data-toggle='collapse' href='#collapse$cid'>$cid</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ct" ;
-		 ;
 				echo "</h4></div><div id='collapse$cid' class='panel-collapse collapse'><div class='panel-body'>";
-
 				$tclass = $tpre = 0;
 				$present = array();
 				$absent = array();
-
 				$quer = "SELECT * From attendence where course_id = '$cid' ORDER BY `date` DESC;";
 				if($result1 = mysqli_query($connection,$quer))
 				{
@@ -146,7 +150,7 @@ if(isset($_POST['logout']))
 
 				}
 				echo"</div></div></div></div><br>";
-			}
+		}
 		}
 		?>
 

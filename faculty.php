@@ -46,8 +46,14 @@ if(isset($_POST['logout']))
 				</div>
 				<div id="collapse1" class="panel-collapse collapse">
 					<div class="panel-body">
-						<form method="post">
+						<form method="post" action="showatt.php">
 							<?php
+							
+							
+							
+							
+							
+							
 							$fac = $_SESSION['fid'];
 							$q = "SELECT * FROM student_teacher WHERE fac_id = '$fac'";
 							if($result = mysqli_query($connection,$q))
@@ -62,8 +68,10 @@ if(isset($_POST['logout']))
 								echo"</tr>";
 								echo"</thead>";
 								echo"<tbody>";
+								$i=1;
 								while($row = mysqli_fetch_assoc($result))
 								{
+									$i++;
 									$regid = $row['regno'];
 
 									$q1 = "SELECT stud_name FROM student WHERE regno = '$regid';";
@@ -77,13 +85,20 @@ if(isset($_POST['logout']))
 									print_r("<td>".$regid."</td>");
 									print_r("<td>".$present."</td>");
 									print_r("<td>".$absent."</td>");
+									//print_r("<td><input type=text name=reg$i id=reg$i value=$regid></button></a></td>");
+								//	print_r("<td><a href=showatt.php><input type=submit name=re id=re value=view></button></a></td>");
 									echo"</tr>";
-								}
+									
+
+							}
+							
 								echo"</tbody>";
 								echo"</table>";
 								echo "<input type='hidden' name='hidden' value='$fac'>";
 								echo "<input type='date' name='date' class='form-control'><br><br>";
 							}
+							
+							
 							?>
 							<button type="submit" name="mark" value="submit" class="btn btn-warning">Mark</button>
 						</form>

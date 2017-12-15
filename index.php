@@ -35,7 +35,7 @@ require("includes/php_script.php");
 
 			<div id="home" class="tab-pane fade in active">
 				<br><br>
-				<p style="font-size: 18px;">Attendance management is the act of managing attendance or presence in a work setting to minimize loss due to employee downtime.Attendance control has traditionally been approached using time clocks, timesheets, and time tracking software, but attendance management goes beyond this to provide a working environment which maximises and motivates employee attendance.Recently it has become possible to collect attendance data automatically through using Real-time location systems, which also allow for cross-linking between attendance data and performance.</p>
+				<p style="font-size: 18px;">Welcome</p>
 			</div>
 
 			<div id="menu1" class="tab-pane fade">
